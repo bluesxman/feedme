@@ -1,16 +1,12 @@
 import { pipeline } from 'stream/promises'
 import {createWriteStream} from "fs";
-import {createWebSocketStream} from 'ws';
 import * as zlib from "zlib";
 
-
-
-async function dispatch(ws) {
-    const stream = createWebSocketStream(ws, { encoding: 'utf8' });
+async function dispatch(sourceStream) {
     await pipeline(
-        stream,
+        sourceStream,
         zlib.createGzip(),
-        createWriteStream('data/test2.txt.gz')
+        createWriteStream('data/test3.txt.gz')
     )
 }
 
