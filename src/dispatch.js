@@ -5,9 +5,9 @@ const orderColumns = ['time', 'side', 'price', 'size']
 const tradeColumns = ['trade_id', 'time', 'size', 'price', 'side']
 
 function writeRow(columns, json, stream) {
-    columns.forEach((col) => {
+    columns.forEach((col, index) => {
         stream.write(json[col].toString())
-        stream.write(',')
+        if (index < columns.length - 1) stream.write(',')
     })
     stream.write('\n')
 }
