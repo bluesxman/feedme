@@ -41,7 +41,7 @@ function snapshotWriter(writeStream) {
 function l2updateWriter(writeStream) {
     return (json) => {
         json.changes.forEach((change) => {
-            if (change[2]) { // remove updates where size is 0
+            if (Number.parseFloat(change[2])) { // remove updates where size is 0
                 const row = {
                     time: json.time,
                     side: change[0],
