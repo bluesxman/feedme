@@ -11,7 +11,7 @@ function sleep(ms) {
 
 async function run() {
     const ws = connect(config.feedUri)
-    subscribe(ws, config.productIds)
+    subscribe(ws, config.productIds, config.channels)
     ws.on('message', dispatch(config.productIds))
     await sleep(5000)
     ws.close()

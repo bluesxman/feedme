@@ -1,15 +1,8 @@
-function subscribe(ws, productIds) {
+function subscribe(ws, productIds, channels) {
     const request = {
         "type": "subscribe",
         "product_ids": productIds,
-        "channels": [
-            "level2",
-            "heartbeat",
-            {
-                "name": "ticker",
-                "product_ids": productIds
-            }
-        ]
+        "channels": channels
     }
 
     ws.on('open', function open() {
